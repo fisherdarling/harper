@@ -217,4 +217,12 @@ mod tests {
         let dict = FullDictionary::curated();
         assert!(dict.get_word_metadata_str("I'm").common);
     }
+
+    #[test]
+    fn rs_is_not_in_it() {
+        let dict = FullDictionary::curated();
+        let word = dict.get_word_metadata(&['r', 's']);
+        dbg!(word);
+        assert!(dict.contains_word(&['r', 's']));
+    }
 }

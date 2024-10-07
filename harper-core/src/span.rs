@@ -43,14 +43,7 @@ impl Span {
     /// Get the associated content. Will return [`None`] if any aspect is
     /// invalid.
     pub fn try_get_content<'a>(&self, source: &'a [char]) -> Option<&'a [char]> {
-        if (self.start > self.end) || (self.start >= source.len()) || (self.end > source.len()) {
-            if self.is_empty() {
-                return Some(&source[0..0]);
-            }
-            return None;
-        }
-
-        Some(&source[self.start..self.end])
+        source.get(self.start..self.end)
     }
 
     /// Get the associated content. Will panic if any aspect is invalid.
